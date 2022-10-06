@@ -1,0 +1,25 @@
+// Layout
+//
+// Styles for managing the structural hierarchy of the site.
+
+.container {
+  max-width: 38rem;
+  padding-left: var(--spacer-2);
+  padding-right: var(--spacer-2);
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+footer {
+  margin-bottom: var(--spacer-2);
+  text-align: center;
+}
+
+footer img.avatar {
+  margin: 0 auto 1rem;
+  border-radius:50%;
+}
+
+footer small {
+  display:block;
+}

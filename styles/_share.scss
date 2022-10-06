@@ -1,0 +1,48 @@
+.buttons-list {
+    display: flex;
+    margin: 1rem 0 1rem 0;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.buttons-list > * {
+    margin-right: 2rem;
+}
+
+button.share {
+    background-color: var(--button-background-color);
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+    color: var(--body-color);
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: var(--heading-font);
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    outline: none;
+}
+
+button.share:before {
+    margin-right: 1rem;
+}
+
+button.share {
+    display: flex;
+}
+
+.feature-no-native-share button.share {
+    display: none;
+}
+
+button.share .icon {
+    margin-right: 1rem;
+}
+
+#share-img-path {
+    fill: var(--body-color);
+}
+
+button.share .button-text {
+    padding: 0 0 0 0.7rem;
+}
