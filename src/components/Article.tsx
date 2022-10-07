@@ -1,6 +1,7 @@
 import * as React from 'react'
 import ButtonsContainer from '../components/ButtonsContainer'
 import ShareButton from '../components/ShareButton'
+import { FormatDate } from '../util/FormatDate'
 
 type ArticleProps = {
     children?: React.ReactNode,
@@ -31,7 +32,7 @@ class Article extends React.Component<ArticleProps, ArticleState> {
             <main>
                 <article className='post'>
                     <h2 className='post-title'>{ this.props.title }</h2>
-                    <div className='post-date'>{ this.props.date }</div>
+                    <time dateTime={this.props.date} className='post-date'>{  (this.props.date != undefined) ? FormatDate(this.props.date!) : ''}</time>
                     <ButtonsContainer>
                         <ShareButton 
                             title={this.props.title} 
