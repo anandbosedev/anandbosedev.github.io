@@ -1,10 +1,14 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
+const FooterFirstLineStyle: React.CSSProperties = {
+  marginTop: '1em'
+}
+
 const Footer = () => (
     <footer className="footer">
         <StaticImage alt="Anand Bose" width={100} height={100} src='../images/avatar.jpg' imgClassName="avatar" />
-        <small>Hi there! I am Anand Bose.</small>
+        <small style={FooterFirstLineStyle}>Hi there! I am Anand Bose.</small>
         <small>👨🏻‍💻📲</small>
         <small>Feel free to follow me on <a href="https://twitter.com/anandbosedev">Twitter</a> or <a href="https://github.com/anandbosedev">GitHub</a>.</small>
         <small>
