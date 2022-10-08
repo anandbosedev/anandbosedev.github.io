@@ -6,6 +6,7 @@ import { HeadFC } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import videoMp4 from './video.mp4'
 import videoWebm from './video.webm'
+import RecentPosts from '../../../components/RecentPosts'
 
 const CONTENT_PATH = '/posts/the-learning-curve-app-development'
 const content = Contents.find(content => content.path == CONTENT_PATH)!
@@ -71,6 +72,7 @@ const ArticlePage = () => (
             <p>App Store Link — <a href="https://toappsto.re/qweather">https://toappsto.re/qweather</a></p>
             <p>Google Play Store — <a href="https://play.google.com/store/apps/details?id=qa.applab.qweather">https://play.google.com/store/apps/details?id=qa.applab.qweather</a></p>
         </Article>
+        <RecentPosts excludeContentPath={CONTENT_PATH} />
     </Layout>
 )
 
