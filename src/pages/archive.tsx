@@ -22,14 +22,14 @@ const ArchivePage = () => {
                 <h1 id="archive">Archive</h1>
                 <p>Browse all posts by month and year.</p>
                 { Array.from(groupedContents.keys()).map(monthAndYear => (
-                    <>
+                    <React.Fragment key={monthAndYear}>
                         <h2>{monthAndYear}</h2>
                         <ul>
                             { groupedContents.get(monthAndYear)?.map(content => (
-                                <li><Link to={content.path}>{content.title}</Link></li>
+                                <li key={content.path}><Link to={content.path}>{content.title}</Link></li>
                             )) }
                         </ul>
-                    </>
+                    </React.Fragment>
                 )) }
             </main>
         </Layout>

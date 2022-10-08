@@ -17,14 +17,14 @@ const Categories = () => {
                 <h1 id="categories">Categories</h1>
                 <p>Browse all posts by categories.</p>
                 { Array.from(groupedContents.keys()).map(category => (
-                    <>
+                    <React.Fragment key={category}>
                         <h2>{category}</h2>
                         <ul>
                             { groupedContents.get(category)?.map(content => (
-                                <li><Link to={content.path}>{content.title}</Link></li>
+                                <li key={content.path}><Link to={content.path}>{content.title}</Link></li>
                             ))}
                         </ul>
-                    </>
+                    </React.Fragment>
                 ))}
             </main>
         </Layout>
