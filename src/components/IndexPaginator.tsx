@@ -33,10 +33,11 @@ class IndexPaginator extends React.Component<{}, IndexPageState> {
     }
 
     buildStateForPage(page: number): IndexPageState {
-        const totalItems = Contents.length
+        const sortedContents = Array.from(Contents).sort((a, b) => (a.date <= b.date) ? 1 : -1)
+        const totalItems = sortedContents.length
         const lastPage = Math.floor(totalItems / ITEMS_PER_PAGE)
         const startIndex = page * ITEMS_PER_PAGE
-        const contents = Contents.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+        const contents = sortedContents.slice(startIndex, startIndex + ITEMS_PER_PAGE)
         return ({ contents, currentPage: page, lastPage })
     }
 

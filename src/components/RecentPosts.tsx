@@ -4,14 +4,13 @@ import { Content, Contents } from '../Contents'
 import { FormatDate } from '../util/FormatDate'
 
 type RecentPostsProps = {
-    excludeIndex?: number
+    excludeContentPath?: string
 }
 
-const RecentPosts = ({ excludeIndex }: RecentPostsProps) => {
+const RecentPosts = ({ excludeContentPath }: RecentPostsProps) => {
     var filteredList: ReadonlyArray<Content>
-    if (excludeIndex !== undefined && excludeIndex >= 0 && excludeIndex < Contents.length) {
-        const itemToExclude = Contents[excludeIndex]
-        filteredList = Contents.filter(x => (x != itemToExclude))
+    if (excludeContentPath !== undefined) {
+        filteredList = Contents.filter(content => content.path != excludeContentPath)
     } else {
         filteredList = Contents
     }

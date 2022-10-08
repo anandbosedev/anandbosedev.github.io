@@ -34,5 +34,5 @@ export const Contents: ReadonlyArray<Content> = [
         date: '2018-08-06',
         path: '/posts/welcome-protocol-buffers',
         category: 'Networking'
-    }
+    },
 ]
