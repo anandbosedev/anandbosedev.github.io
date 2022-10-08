@@ -49,7 +49,7 @@ const ArticlePage = () => {
                 </p>
                 <p>
                     For better understanding, here is an illustrative example.
-                    <StaticImage src='../../../images/key_rotation.jpeg' alt='' />
+                    <StaticImage src='./key_rotation.jpeg' alt='' />
                 </p>
                 <h3 id="lets-get-started">Let’s get started</h3>
                 <p>
