@@ -1,0 +1,50 @@
+/*------------------------------------*\
+  Elements > Typography
+\*------------------------------------*/
+
+$font-size-h1:  36px;
+$font-size-h2:  28px;
+$font-size-h3:  24px;
+$font-size-h4:  20px;
+$font-size-h5:  18px;
+$font-size-h6:  16px;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  line-height: initial;
+}
+
+h1 {
+  font-size: $font-size-h1;
+  font-weight: $font-weight-light;
+}
+
+h2 {
+  font-size: $font-size-h2;
+  font-weight: $font-weight-light;
+}
+
+h3 {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-regular;
+}
+
+h4 {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-regular;
+}
+
+h5 {
+  font-size: $font-size-h5;
+  font-weight: $font-weight-regular;
+}
+
+h6 {
+  font-size: $font-size-h6;
+  font-weight: $font-weight-regular;
+}
