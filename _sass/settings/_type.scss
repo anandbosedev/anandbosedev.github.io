@@ -16,8 +16,8 @@ $font-base:
 $font-monospace:  'JetBrains Mono', Courier, monospace;
 
 $font-size-large:  18px;
-$font-size-base:   14px;
-$font-size-medium: 14px;
+$font-size-base:   16px;
+$font-size-medium: 16px;
 $font-size-small:  14px;
 $font-size-tiny:   12px;
 
@@ -26,7 +26,7 @@ $font-weight-regular: 400;
 $font-weight-bold:    600;
 $font-weight-bolder:  900;
 
-$line-height-large:   round($font-size-large   *  1.7);
+$line-height-large:  round($font-size-large   *  1.7);
 $line-height-base:   round($font-size-base   *  1.7);
 $line-height-medium: round($font-size-medium * 1.55);
 $line-height-small:  round($font-size-small  * 1.55);
