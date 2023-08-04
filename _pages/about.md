@@ -1,11 +1,21 @@
 ---
 layout: page
 title: About
-image: '/images/pages/about.jpeg'
+image: '/images/pages/about.jpg'
 ---
 
-You love Minimalism, and you also love writing, Type is designed for you. Type focus on showing your content in a clean and simple way, focus on images, typography, and white space.
+I'm Anand Bose. I used to do [#AndroidDev](/tag/AndroidDev/) since Android 2.3 (Gingerbread). Kotlin enthusiast since the 1.0 of the language. I love the Android community and so glad to be the part of it. I am currently working as lead of Android team at [AppStation](https://appstation.in).
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+A few things I enjoy:
+* Discovering more Android stuffs
+* Writing and talking tech
+* Having fun times with family
+* Photography
+* Cycling
 
-Lorem ipsum dolor sit amet, vix ut case porro facilisis, alia possit neglegentur vis te. Has cu eirmod abhorreant, vel civibus efficiantur cu. Eu summo elitr vix, iusto putant maluisset per ut, ne etiam vivendum adipisci vel. Vis omnis tempor accusam ei, justo perpetua liberavisse cu qui. Saperet aliquando adipiscing ius ne, ne facer euripidis est. Pro mundi nostrum suavitate et.
+## Links
+
+* [github.com/droidcrafts](https://github.com/droidcrafts)
+* [x.com/droidcrafts](https://x.com/droidcrafts)
+* [mastodon.social/@anandbose](https://mastodon.social/@anandbose)
+* [pixelfed.social/@anandbose](https://pixelfed.social/@anandbose)
