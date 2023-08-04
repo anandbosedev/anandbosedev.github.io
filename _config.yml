@@ -16,6 +16,7 @@ github:      'https://github.com/droidcrafts'
 instagram:   ''
 facebook:    ''
 mastodon:    'https://mastodon.social/@anandbose'
+pixelfed:    'https://pixelfed.social/@anandbose'
 
 markdown:  kramdown
 permalink: pretty
