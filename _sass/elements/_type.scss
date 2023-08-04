@@ -17,16 +17,17 @@ h5,
 h6 {
   font-weight: inherit;
   line-height: initial;
+  color: $color-brand;
 }
 
 h1 {
   font-size: $font-size-h1;
-  font-weight: $font-weight-light;
+  font-weight: $font-weight-regular;
 }
 
 h2 {
   font-size: $font-size-h2;
-  font-weight: $font-weight-light;
+  font-weight: $font-weight-regular;
 }
 
 h3 {
