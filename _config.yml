@@ -7,10 +7,10 @@
 
 # Site settings
 title:       Anand's Blog
-email:       'anandbose16@gmail.com'
-description: ''
+email:       anandbose16@gmail.com
+description: Anand's Blog
 baseurl:     '' # The subpath of your site, e.g. /blog
-url:         'https://type-jekyll.aspirethemes.com/' # The base hostname & protocol for your site
+url:         'https://droidcrafts.github.io/' # The base hostname & protocol for your site
 twitter:     'https://twitter.com/droidcrafts'
 github:      'https://github.com/droidcrafts'
 instagram:   ''
@@ -28,6 +28,8 @@ sass:
 plugins:
   - jekyll-paginate
   - jekyll/tagging
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 include:
   - _pages

@@ -11,11 +11,11 @@ A few things I enjoy:
 * Writing and talking tech
 * Having fun times with family
 * Photography
-* Cycling
+* Biking
 
 ## Links
 
 * [github.com/droidcrafts](https://github.com/droidcrafts)
-* [x.com/droidcrafts](https://x.com/droidcrafts)
+* [linkedin.com/in/droidcrafts](https://linkedin.com/in/droidcrafts)
 * [mastodon.social/@anandbose](https://mastodon.social/@anandbose)
 * [pixelfed.social/@anandbose](https://pixelfed.social/@anandbose)
