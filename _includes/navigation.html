@@ -7,6 +7,24 @@
     {% endif %}
   {% endunless %}
 {% endfor %}
+
+<h4 class="c-nav__h4">Tags</h4>
+
+{% capture site_tags %}
+  {% for tag in site.tags %}
+    {{ tag | first }}{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+{% endcapture %}
+
+{% assign tags_list = site_tags | split:',' | sort_natural %}
+{% for tag in tags_list %}
+  <li class='c-nav__item' role='presentation'>
+    <a class='c-nav__link' href='/tag/{{ tag | strip | downcase}}'>
+      #{{ tag | strip }}
+    </a>
+  </li>
+{% endfor %}
+
 <h4 class="c-nav__h4">Links</h4>
 <li class='c-nav__item' role='presentation'>
   <a class='c-nav__link' href='https://github.com/droidcrafts' target="_blank">
