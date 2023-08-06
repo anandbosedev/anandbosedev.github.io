@@ -47,7 +47,9 @@ fun CounterApp() {
 
 This is how the app looks like:
 <video style="width: 100%;" controls alt="The video of the simple counter app with two buttons for incrementing and decrementing value.">
-    <source src="/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/Screen Recording 2023-08-06 at 10.26.18 AM.mov" type="video/quicktime">
+    <source src="/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/app_video.mov" type="video/quicktime">
+    <source src="/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/app_video.mp4" type="video/mp4">
+    <source src="/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/app_video.webm" type="video/webm">
 </video>
 
 # Reverse Engineering Compose app
