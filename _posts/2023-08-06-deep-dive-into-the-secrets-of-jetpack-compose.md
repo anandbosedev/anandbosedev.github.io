@@ -6,7 +6,7 @@ image: /images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/je
 ---
 Jetpack Compose is the modern technology built upon the solid foundation of Kotlin, which enables us to express the UI in a declarative way. The compose compiler abstracts and keeps us away from the heavy and complicated state management. In short, with Compose, we can express UI as a function of the underlying state and Compose compiler will do the rest for us.
 
-The following questions came to my mind when I started learning Compose.
+<a name="questions"></a>The following questions came to my mind when I started learning Compose.
 
 1. How Compose do the state management under the hood?
 2. Why `@Composable` functions are not callable from outside of the compose world?
@@ -52,7 +52,17 @@ This is how the app looks like:
     <source src="/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/app_video.webm" type="video/webm">
 </video>
 
-# Reverse Engineering Compose app
+For the sake of simplicity, let's keep this functional model in the mind:
+```
+CounterApp():
+    Column(...)
+        Text(...)
+        Row(...)
+            Button(...)
+            Spacer(...)
+            Button(...)
+```
+## Reverse Engineering Compose app
 
 To decompile the app, I used [dex2jar](https://github.com/pxb1988/dex2jar) for decompiling APK file, and [jd-gui](https://github.com/java-decompiler/jd-gui) for decompiling JAR to human-readable source.
 
@@ -61,63 +71,64 @@ To decompile the app, I used [dex2jar](https://github.com/pxb1988/dex2jar) for d
 dex2jar app-debug.apk -> ./app-debug-dex2jar.jar
 % java -jar ./jd-gui-1.6.6-min.jar app-debug-dex2jar.jar
 ```
-In the JD-GUI window, I navigated to the `MainActivityKt.class` file and looked for the `CounterApp()` method. The compose compiler adds these additional parameters:
+In the JD-GUI window, navigate to the `MainActivityKt.class` file and look for the `CounterApp()` method. There we found that strangers in the party! -- the `Composer paramComposer` and `int paramInt`.
 
 ![Decompiled Java code in JD-GUI app](/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/counter-app-fn-transformed.jpg)
 
-Unlike the normal functions, composables can re-compose during the change of state. The `Composer` parameter injected by the compiler is responsible for determining the state changes and estimates the branches of the tree that needs to be rebuilt for representing the present state. Unlike the behavior of the call stack, composable functions can execute in any order, and the runtime can off-load the calls from the main thread too, if required.
+These parameters injected by the compose compiler needs more explaination. The compose framework encourages the developer to have functional approach to the UI, instead of the object oriented *"View"* like approach. But the functional approach have some drawbacks, in the context of building UI:
 
-The compiler added a huge pile of carefully crafted codes within the `CounterApp()` implementation. The generated codebase is too huge and barely readable, and contains a lot of state management code: 
+* The functions are called exactly in the order in the call stack.
+* They are called on the same thread of the caller, unless caller spawns a new thread for executing them.
+* The executed functions will not be executed later, unless they are called again.
 
-![The size of Compose code vs Compiler generated code](/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/jetpack-compose-generated.jpg)
+These limitations needs to be resolved to develop a UI framework with the functional approach. That's why the Compose compiler injects these parameters. The compose compiler wraps the @Composable tree within **restart groups**, **replaceable groups**, **movable groups**, determined **reusable nodes**, and add checks to detect change in state values (aka *"remembered"* values). Also, the composer will take a reference to the @Composable function before returning to call it again when the runtime detects state changes (changes to the *"remembered"* values). This is how the compose compiler organises the @Composable tree with restart groups and replaceable groups:
 
-Basically, Jetpack compose does some additional work to handle the following cases during state changes:
-
-* Handle the nodes affected by the state change.
-* Handle the modifications (new nodes and deleted nodes) of the tree during the state change.
-* Reuse the unmodified nodes.
-
-To achieve this, Jetpack compose wraps the nodes as *restart groups* and *replaceable groups*. In the reverse engineered code, it can be found that the `CounterApp` is modified as the components are wrapped in restart groups and replaceable groups. Here is the pseudo-code of the `CounterApp` tree grouped by the compose compiler:
-
-```kotlin
-startRestartGroup(key = 215168731) {
-    startReplaceableGroup(key = -492369756) {
-        // check rememberedValue, set default if it is not initialized
-    }
-    startReplaceableGroup(key = -483455358) {
-        // column measure policy and other stuffs
-        Column(...)
-        startReplaceableGroup(key = -1323940314) {
-            // consume density, layout direction and view configuration from CompositionLocal
-            
-            // node reuse code
-
-            startReplaceableGroup(key = 2058660585) {
-                Text(...)
-                startReplaceableGroup(key = 693286680) {
-                    // determine row measurement policy
-                    Row(...)
-                    startReplaceableGroup(key = -1323940314) {
-                        // consume density, layout direction and view configuration from CompositionLocal
-
-                        // node reuse code
-                        
-                        startReplaceableGroup(key = 2058660585) {
-                            // set row scope
-                            startReplaceableGroup(key = 1157296644) {
-                                // check and update rememberedValue
-                                Button(...)
-                            }
-                            startReplaceableGroup(key = 1157296644) {
-                                // check and update rememberedValue
-                                Button(...)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 ```
-*This article is work-in-progress. Stay tuned for more updates.*
+CounterApp(..., composer):
+    composer.startRestartGroup(...)
+    if changed or not composer.skipping:
+        mutableState = composer.getRememberedValue()
+        if mutableState is empty:
+            mutableState = composer.getSnapshot()
+            composer.updateRememberedValue(mutableState)
+        composer.startReplaceableGroup(...)
+        Column(..., composer)
+            composer.startReplaceableGroup(...)
+            Text(..., mutableState.value.toString(), composer)
+            Row(..., composer)
+                composer.startReplaceableGroup(...)
+                Button(..., composer)
+                Spacer(..., composer)
+                Button(..., composer)
+                composer.endReplaceableGroup(...)
+            composer.endReplaceableGroup(...)
+        composer.endReplaceableGroup(...)
+    composer.endRestartGroup(...)
+    updateScope(&CounterApp)
+```
+
+This answers [question #2](#questions). In the compiled code, the @Composable functions require the instance of `Composer` interface. That's why it cannot be called from outside of the @Composable context.
+
+## Restart groups vs Replaceable groups
+
+To put this in the most simplest manner, **restart groups** are a unit of composable chunk which will be called again (aka *"recomposed"*) when the state (aka *"remembered"* value) changes. The **replaceable groups** are @Composable tree which is replaced with a new tree when the state changes, because the change of state results in changes to the existing nodes, new-born nodes and deleted nodes. The compose will keep the remembered values scoped to the restart groups internally. Also, it will identify the state changes, compute the changes in the @Composable tree, determine the affected and unaffected nodes, and replace/reuse the affected nodes in the most efficient manner.
+
+## Optimizations
+
+The compose compiler optimizes the recomposition in the most efficient way. From the reverse engineered code, we can find the compose compiler applies several optimizations in the code. Here are a few examples:
+
+The compiler add code for checking changes in state, and fetch the most up-to-date state values.
+
+![Code for checking change in state](/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/compose-compiler-out-1.jpg)
+
+Also, the compiler tries to reuse the existing nodes to achieve maximum performance.
+
+![Code for reusing the nodes if possible](/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/compose-compiler-out-2.jpg)
+
+The most notable fact is, the compose runtime will collect a callable reference to the function and keeps it internally. The compose runtime will call it regardless of the order, or from any thread, whenever a recomposition is required.
+
+![Code for obtaining reference to the @Composable function for recomposing](/images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/compose-compiler-out-3.jpg)
+
+This is how the @Composable function is executed regardless of the order of call or the state of call-stack.
+
+It is so wonderful to see how Compose adheres to the functional way of doing things, even keeping a clear separation between the declarative UI and state. The higher degree of code reusability, simplicity and the powerful optimizations and state management under the hood makes the Jetpack Compose a productive, next generation UI framework.
