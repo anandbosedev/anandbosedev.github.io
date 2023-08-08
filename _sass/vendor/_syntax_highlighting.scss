@@ -3,11 +3,11 @@
  */
 
 .highlight {
-  margin: 0;
+  // margin: 0;
   background: #fff;
 
   .highlighter-rouge & {
-    background: #FAFAFA;
+    background: $bg-color-gray;
   }
 
   .c     { color: #998; font-style: italic } // Comment

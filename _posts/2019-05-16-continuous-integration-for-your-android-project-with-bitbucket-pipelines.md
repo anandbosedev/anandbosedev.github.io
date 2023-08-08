@@ -38,7 +38,7 @@ In your repository page, go to **Settings — Pipelines settings** and enabl
 
 You have to create an app password. It is necessary to upload the built artifacts to Download section. For this, navigate to **Account settings **— **App passwords — Create app password**. Keep the generated password to a safe place, because BitBucket won’t save it anywhere.
 
-![](/images/posts/2019-05-16-continuous-integration-for-your-android-project-with-bitbucket-pipelines/bb-app-passwords.png.png)
+![](/images/posts/2019-05-16-continuous-integration-for-your-android-project-with-bitbucket-pipelines/bb-app-passwords.png)
 
 All right, go to **Account variables** section and **create a new variable** named `BB_AUTH_STRING` with value `<username>:<app password>` format. This variable will be available as environment variable in the container image. So, you can safely upload the build artifacts, without compromising the authentication credentials.
 

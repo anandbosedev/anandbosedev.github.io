@@ -20,23 +20,17 @@ fun CounterApp() {
     var count by remember {
         mutableStateOf(0)
     }
-    Column(
-        modifier = Modifier.padding(8.dp),
-    ) {
+    Column(modifier = Modifier.padding(8.dp)) {
         Text(
             text = count.toString(),
             fontSize = 56.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
-        Row(
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        ) {
+        Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             Button(onClick = { count += 1 }) {
                 Text(text = "Increment")
             }
-            Spacer(
-                modifier = Modifier.width(8.dp)
-            )
+            Spacer(modifier = Modifier.width(8.dp))
             Button(onClick = { count -= 1 }) {
                 Text(text = "Decrement")
             }
