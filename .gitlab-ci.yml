@@ -1,0 +1,16 @@
+image: ruby:3.2.2
+cache:
+  paths:
+    - vendor/
+pages:
+  before_script:
+    - gem install bundler
+    - bundle install
+  script:
+    - bundle exec jekyll build -d public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  environment: production
