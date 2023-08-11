@@ -4,7 +4,7 @@ title: About
 image: '/images/pages/about.jpg'
 ---
 
-I'm Anand Bose. I used to do [#AndroidDev](/tag/AndroidDev/) since Android 2.3 (Gingerbread). Kotlin enthusiast since the 1.0 of the language. I love the Android community and so glad to be the part of it. I am currently working as lead of Android team at [AppStation](https://appstation.in).
+I'm Anand Bose. I used to do [#AndroidDev](/tag/AndroidDev/) since Android 2.3 (Gingerbread). Kotlin enthusiast since the 1.0 of the language. I love the Android community and so glad to be the part of it. I am currently working as lead of Android team at [Appstation](https://appstation.in).
 
 A few things I enjoy:
 * Discovering more Android stuffs
@@ -16,6 +16,7 @@ A few things I enjoy:
 ## Links
 
 * [github.com/droidcrafts](https://github.com/droidcrafts)
+* [gitlab.com/anandbose](https://gitlab.com/anandbose)
 * [linkedin.com/in/droidcrafts](https://linkedin.com/in/droidcrafts)
-* [mastodon.social/@anandbose](https://mastodon.social/@anandbose)
-* [pixelfed.social/@anandbose](https://pixelfed.social/@anandbose)
+* [@anandbose@mastodon.social](https://mastodon.social/@anandbose)
+* [@vibes@pixelfed.social](https://pixelfed.social/@vibes)
