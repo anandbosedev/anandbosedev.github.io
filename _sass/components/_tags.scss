@@ -19,6 +19,12 @@
       text-decoration: none;
       background-color: $bg-color-gray;
     }
+
+    margin-bottom: double($base-spacing-unit);
+    border-color: $color-border;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 4px 4px $color-border;
   }
 
   @include mq($until: tablet) {
