@@ -15,8 +15,8 @@ A few things I enjoy:
 
 ## Links
 
-* [github.com/droidcrafts](https://github.com/droidcrafts)
+* [github.com/anandbosetech](https://github.com/anandbosetech)
 * [gitlab.com/anandbose](https://gitlab.com/anandbose)
-* [linkedin.com/in/droidcrafts](https://linkedin.com/in/droidcrafts)
+* [linkedin.com/in/anandbosetech](https://linkedin.com/in/anandbosetech)
 * [@anandbose@mastodon.social](https://mastodon.social/@anandbose)
 * [@vibes@pixelfed.social](https://pixelfed.social/@vibes)
