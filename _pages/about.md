@@ -15,8 +15,8 @@ A few things I enjoy:
 
 ## Links
 
-* [github.com/anandbosetech](https://github.com/anandbosetech)
-* [gitlab.com/anandbose](https://gitlab.com/anandbose)
-* [linkedin.com/in/anandbosetech](https://linkedin.com/in/anandbosetech)
+You can find my presence on these few parts of the internet:
+* [github.com/anandbosedev](https://github.com/anandbosedev)
+* [linkedin.com/in/anandbosedev](https://linkedin.com/in/anandbosedev)
 * [@anandbose@mastodon.online](https://mastodon.online/@anandbose)
-* [@vibes@pixelfed.social](https://pixelfed.social/@vibes)
+* [@anandbose.bsky.social](https://bsky.app/profile/anandbose.bsky.social)

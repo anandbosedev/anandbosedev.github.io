@@ -10,9 +10,9 @@ title:       Anand's Blog
 email:       anandbose16@gmail.com
 description: Anand's Blog
 baseurl:     '' # The subpath of your site, e.g. /blog
-url:         'https://anandbosetech.github.io/' # The base hostname & protocol for your site
-twitter:     'https://twitter.com/anandbosetech'
-github:      'https://github.com/anandbosetech'
+url:         'https://anandbose.dev' # The base hostname & protocol for your site
+twitter:     'https://twitter.com/anandbosedev'
+github:      'https://github.com/anandbosedev'
 instagram:   ''
 facebook:    ''
 mastodon:    'https://mastodon.online/@anandbose'
