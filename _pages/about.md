@@ -19,4 +19,4 @@ You can find my presence on these few parts of the internet:
 * [github.com/anandbosedev](https://github.com/anandbosedev)
 * [linkedin.com/in/anandbosedev](https://linkedin.com/in/anandbosedev)
 * [@anandbose@mastodon.online](https://mastodon.online/@anandbose)
-* [@anandbose.bsky.social](https://bsky.app/profile/anandbose.bsky.social)
+* [@anandbose.dev](https://bsky.app/profile/anandbose.dev)
