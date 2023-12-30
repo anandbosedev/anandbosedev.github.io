@@ -33,6 +33,7 @@ plugins:
 
 include:
   - _pages
+  - .well-known
 
 exclude:
   - vendor
