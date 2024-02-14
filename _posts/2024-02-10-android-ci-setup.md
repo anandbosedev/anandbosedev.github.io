@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Continuous Integration for Android projects - A setup journey
+title: Continuous Integration for Android projects - A journey towards containerized workflows
 tags: ['Android', 'CI', 'Docker', 'TestAutomation']
 ---
 Continuous Integration is an important aspect in the software industry to accelerate the development workflow. With continuous integration, we can build the project, execute test cases, check code with lint and store artifacts and reports in the cloud on every phase of the software development.
@@ -21,11 +21,11 @@ For setting up CI for Android projects, we need to start with build a container 
 
 ### Create Android SDK container image with Docker
 
-First, we need to install Docker engine in the host system. You can follow the [official documentation of the Docker](https://docs.docker.com/engine/) to install Docker engine. If you are running Linux, I recommend to [set up rootless mode](https://docs.docker.com/engine/security/rootless/) to work with Docker without admin privileges. 
+First, we need to install Docker engine in the host system. You can follow the [official documentation of the Docker](https://docs.docker.com/engine/) to install Docker engine. If you are running Linux, I recommend to [set up rootless mode](https://docs.docker.com/engine/security/rootless/) to work with Docker without admin privileges. You can also use [Podman](https://podman.io) which offers a [rootless & daemonless](https://www.redhat.com/en/topics/containers/what-is-podman) environment to operate containers as a drop-in replacement for Docker. Also Podman comes pre-installed on Linux distributions like [Fedora](https://fedoraproject.org).
 
-> To proceed further with this article, it is advised to have basic knowledge in shell-scripting and understanding of Docker and [Dockerfile commands](https://docs.docker.com/engine/reference/builder/). If you don't want to dive deeper to this, you can always checkout my reference implementations of Android SDK container images ([GitHub Link](https://github.com/anandbosedev/android-sdk)) and a sample project to demonstrate how to use these container images to setup CI in [GitHub](https://github.com/anandbosedev/android-ci-demo), [GitLab](https://gitlab.com/anandbose/android-ci-demo), [BitBucket](https://bitbucket.org/anandbose/android-ci-demo) and [Azure DevOps](https://dev.azure.com/anandbose/android-ci-demo).
+> To proceed further with this article, it is advised to have a basic knowledge in shell-scripting and understanding of Docker and [Dockerfile commands](https://docs.docker.com/engine/reference/builder/). If you don't want to dive deeper to this, you can always checkout my reference implementations of Android SDK container images at the GitHub repo [anandbosedev/android-sdk](https://github.com/anandbosedev/android-sdk).
 
-For building the container image, we can start with a linux distribution image (eg. Debian). The Debian image contains the `apt` package manager configured with Debian repositories is good for us to install the requirements. Create a `Dockerfile` and start with the following contents:
+For building the container image, we can start with a linux distribution image. The Debian image contains the `apt` package manager configured with repositories with vast collection of software is good for us to install the requirements. Let's start with creating a `Dockerfile`:
 
 ```Dockerfile
 FROM debian:12.4-slim
@@ -107,4 +107,34 @@ docker push docker.io/<username>/android-sdk:<version>
 docker push ghcr.io/<username>/android-sdk:<version>
 ```
 Congrats! You have successfully bundled Android SDK to a container image! Now, let's see how we can use this image in our CI pipelines.
-> *Updating...*
+
+### Setup CI with GitHub Workflows
+
+In this section, we will set up CI for a Android project hosted in a GitHub repository. The configuration for GitHub workflows are written in YAML format and located on `.github/workflows` directory. A basic build workflow will look like this:
+
+```yaml
+name: Android Project Build Workflow
+
+# Configure the workflow to run every push on main branch
+on:
+  push:
+    branches: [ main ]
+
+# Define a build job which runs on Ubuntu VM and uses the Android SDK container image for a pre-built Android SDK toolchain environment
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: 
+      image: anandbose16/android-sdk:34
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build project with Gradle
+        run: gradle clean :app:assembleDebug
+      - name: Upload builds to artifact registry
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'build'
+          path: app/build/outputs/apk/debug/app-debug.apk
+```
+
+That's it! You can extend this workflow to build lint reports, run automated tests and deploy to Google Play store and so on. You can checkout my GitHub repo [anandbosedev/android-ci-demo](https://github.com/anandbosedev/android-ci-demo) which contains the templates of advanced CI configurations for GitHub, GitLab, BitBucket and Azure Pipelines. You can freely copy them to kickstart your journey of CI in your Android projects!
