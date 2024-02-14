@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Android Signing Key Rotation – Explained
-tags: ['AndroidDev', 'Cryptography']
+tags: ['Android', 'Cryptography']
 image: /images/posts/2020-05-08-android-signing-key-rotation-explained/key_rotation.jpg
 ---
 

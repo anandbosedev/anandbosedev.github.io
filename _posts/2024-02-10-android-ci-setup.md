@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Continuous Integration for Android projects - A journey towards containerized workflows
-tags: ['Android', 'CI', 'Docker', 'TestAutomation']
+tags: ['Android', 'ContinuousIntegration', 'Docker', 'Testing']
 ---
 Continuous Integration is an important aspect in the software industry to accelerate the development workflow. With continuous integration, we can build the project, execute test cases, check code with lint and store artifacts and reports in the cloud on every phase of the software development.
 

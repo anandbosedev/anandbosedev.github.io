@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Deep dive into the secrets of Jetpack Compose
-tags: ['AndroidDev', 'JetpackCompose']
+tags: ['Android', 'JetpackCompose']
 image: /images/posts/2023-08-06-deep-dive-into-the-secrets-of-jetpack-compose/jetpack-compose-2.jpg
 ---
 Jetpack Compose is the modern technology built upon the solid foundation of Kotlin, which enables us to express the UI in a declarative way. The compose compiler abstracts and keeps us away from the heavy and complicated state management. In short, with Compose, we can express UI as a function of the underlying state and Compose compiler will do the rest for us.
