@@ -1,0 +1,6 @@
+{
+    "image": "ruby:3.3.0",
+    "forwardPorts": [
+        4000
+    ]
+}
