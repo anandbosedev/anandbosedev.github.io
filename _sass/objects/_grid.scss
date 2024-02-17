@@ -2,7 +2,7 @@
   Objects > Grid
 \*------------------------------------*/
 
-$grid-width: 700px;
+$grid-width: 64rem;
 $grid-gutter: $base-spacing-unit;
 
 .o-grid {
@@ -10,6 +10,7 @@ $grid-gutter: $base-spacing-unit;
   display: flex;
   flex-wrap: wrap;
   max-width: $grid-width;
+  letter-spacing: 0.5px;
 
   @include clearfix();
 
