@@ -4,19 +4,19 @@ title: About
 image: '/images/pages/about.jpg'
 ---
 
-I'm Anand Bose. I used to do [#AndroidDev](/tag/AndroidDev/) since Android 2.3 (Gingerbread). Kotlin enthusiast since the 1.0 of the language. I love the Android community and so glad to be the part of it. I am currently working as lead of Android team at [Appstation](https://appstation.in).
+I'm Anand Bose. I used to do [#AndroidDev](/tag/AndroidDev/) since Android 2.3 (Gingerbread). Kotlin enthusiast since the 1.0 of the language. I am currently working as lead of Android team at [Appstation](https://appstation.in) and [Applab](https://applab.qa).
 
 A few things I enjoy:
-* Discovering more Android stuffs
-* Writing and talking tech
+* Making apps for Android with Kotlin and Jetpack compose
+* Tinkeing on Linux and containers
+* Blogging and talking tech
 * Having fun times with family
 * Photography
-* Biking
 
 ## Links
 
 You can find my presence on these few parts of the internet:
-* [github.com/anandbosedev](https://github.com/anandbosedev)
-* [linkedin.com/in/anandbosedev](https://linkedin.com/in/anandbosedev)
-* [@anandbose@mastodon.online](https://mastodon.online/@anandbose)
-* [@anandbose.dev](https://bsky.app/profile/anandbose.dev)
+* GitHub [@anandbosedev](https://github.com/anandbosedev)
+* LinkedIn [@anandbosedev](https://linkedin.com/in/anandbosedev)
+* Mastodon [@anandbose@mastodon.online](https://mastodon.online/@anandbose)
+* BlueSky [@anandbose.dev](https://bsky.app/profile/anandbose.dev)
