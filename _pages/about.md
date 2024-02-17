@@ -19,4 +19,4 @@ You can find my presence on these few parts of the internet:
 * GitHub [@anandbosedev](https://github.com/anandbosedev)
 * LinkedIn [@anandbosedev](https://linkedin.com/in/anandbosedev)
 * Mastodon [@anandbose@mastodon.online](https://mastodon.online/@anandbose)
-* BlueSky [@anandbose.dev](https://bsky.app/profile/anandbose.dev)
+* Bluesky [@anandbose.dev](https://bsky.app/profile/anandbose.dev)
