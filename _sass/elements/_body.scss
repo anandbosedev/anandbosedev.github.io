@@ -3,7 +3,8 @@
 \*------------------------------------*/
 
 body {
-  color: $color-text;
+  color: var(--color-text);
+  background-color: var(--color-background);
   font-size: $font-size-base;
   font-family: $font-base;
   line-height: $line-height-base;
@@ -16,6 +17,6 @@ body {
 }
 
 *::selection {
-  color: $color-white;
-  background: $color-brand;
+  color: var(--color-white);
+  background: var(--color-brand);
 }

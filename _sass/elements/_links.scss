@@ -4,7 +4,7 @@
 
 a {
   text-decoration: none;
-  color: $color-link;
+  color: var(--color-link);
   transition: $global-transition;
 
   @include attention() {

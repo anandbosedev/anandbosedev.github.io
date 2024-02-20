@@ -7,7 +7,7 @@
   transition: $global-transition;
 
   @include attention() {
-    color: $color-brand;
+    color: var(--color-brand);
     text-decoration: none;
   }
 

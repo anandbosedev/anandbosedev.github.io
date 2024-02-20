@@ -20,3 +20,40 @@ $color-border: #a3b2cb32;
 // Links
 $color-link:        $color-text;
 $color-link-hover:  $color-brand;
+
+:root {
+    --color-background: #{$color-background};
+    --color-brand: #{$color-brand};
+    --color-white: #{$color-white};
+    --color-text: #{$color-text};
+    --color-gray: #{$color-gray};
+
+    --bg-color-white: #{$color-white};
+    --bg-color-dark: #{$bg-color-dark};
+    --bg-color-gray: #{$bg-color-gray};
+
+    --color-border: #{$color-border};
+
+    --color-link: #{$color-link};
+    --color-link-hover: #{$color-link-hover};
+}
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: #222222;
+        --color-brand: #0084FF;
+        --color-white: #000000;
+        --color-text: #FFFFFF;
+        --color-gray: #AAAAAA;
+
+        --bg-color-white: #222222;
+        --bg-color-dark: #FFFFFF;
+        --bg-color-gray: #111111;
+
+        --color-border: #{$color-border};
+
+        --color-link: #FFFFFF;
+        --color-link-hover: #{$color-link-hover};
+    }
+}

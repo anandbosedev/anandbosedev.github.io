@@ -5,7 +5,7 @@
 .c-header {
   &__inner {
     padding: $base-spacing-unit 0;
-    border-bottom: 1px solid $color-border;
+    border-bottom: 1px solid var(--color-border);
   }
 
   &__icon {
