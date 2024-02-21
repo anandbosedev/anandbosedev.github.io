@@ -5,7 +5,7 @@
 pre,
 code {
   font-family: $font-monospace;
-  background-color: $bg-color-gray;
+  background-color: var(--bg-color-gray);
   letter-spacing: normal;
   font-size: $font-size-small;
 }

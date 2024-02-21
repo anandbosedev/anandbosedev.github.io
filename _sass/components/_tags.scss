@@ -12,19 +12,19 @@
     font-family: $font-base;
     line-height: $line-height-medium;
 
-    background-color: $bg-color-gray;
+    background-color: var(--bg-color-gray);
     transition: $global-transition;
 
     @include attention() {
       text-decoration: none;
-      background-color: $bg-color-gray;
+      background-color: var(--bg-color-gray);
     }
 
     margin-bottom: double($base-spacing-unit);
-    border-color: $color-border;
+    border-color: var(--color-border);
     border-style: solid;
     border-width: 1px;
-    box-shadow: 4px 4px $color-border;
+    box-shadow: 4px 4px var(--color-border);
   }
 
   @include mq($until: tablet) {

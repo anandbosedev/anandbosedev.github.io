@@ -18,7 +18,7 @@ $off-canvas-width: 300px;
     left: 0;
     height: 1px;
     width: 25px;
-    background: $color-text;
+    background: var(--color-text);
     cursor: pointer;
 
     &:before,
@@ -41,7 +41,7 @@ $off-canvas-width: 300px;
       &:after {
         position: relative;
         visibility: visible;
-        background: $color-text;
+        background: var(--color-text);
       }
 
       &:before {
@@ -78,7 +78,7 @@ body {
   width: $off-canvas-width;
   height: 100%;
   padding: ($base-spacing-unit + half($base-spacing-unit)) double($base-spacing-unit);
-  background-color: $bg-color-white;
+  background-color: var(--bg-color-white);
   transform: translate3d($off-canvas-width, 0, 0);
 }
 
