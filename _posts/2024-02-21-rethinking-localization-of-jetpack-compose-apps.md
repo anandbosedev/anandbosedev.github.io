@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Rethinking the localization of Jetpack Compose applications
+title: Rethinking the state of localization in Jetpack Compose — A Kotlin-first approach to localization
 tags: ['Android', 'JetpackCompose', 'Localization']
----
+--- 
 
 Most of the Jetpack Compose applications depends on the Android resources system for localization. This is okay and works just fine and follows the system locale. But there are some side-effects on this approach.
 
@@ -10,7 +10,7 @@ Most of the Jetpack Compose applications depends on the Android resources system
 2. To access a string of different locale, you need to create another `Context` with overridden locale configuration, which is expensive.
 3. If your app wants to change the locale by itself, you need to override the base context of the activity and restart it. Restarting activity causes unpleasant user experience.
 
-The motto of Jetpack Compose is to build UI with declarative Kotlin code, and to enable Kotlin first approach to the every aspect of the application. Why don't we think about a Kotlin first approach to localization?
+The motto of Jetpack Compose is to build UI with declarative Kotlin code, and to put Kotlin-first approach to the every aspect of the application. Why don't we think about a Kotlin-first approach to localization?
 
 ## Motivation
 
@@ -32,7 +32,7 @@ Just like this, I just want to access the localized strings independently, and I
 ```kotlin
 Column {
     Text(
-        text = Strings.greeting, // Translations of "Hello, World!"
+        text = Strings.greeting, // "Hello, World!"
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.primary,
     )
@@ -129,7 +129,7 @@ fun Greeting() {
 ```
 In a nutshell,
 * If you want to get the localized version of the greeting, use `Strings.greeting`. This will recompose the consumers when the CompositionLocal `LocalStrings` changes.
-* If you want the greeting in the default locale (here in our case it is English), use `DefaultStrings.greeting`. This will not change and neither triggers recomposition.
+* If you want the greeting in the default locale (English), use `DefaultStrings.greeting`. This will not change and neither triggers recomposition.
 * If you want the greeting in Spanish language, use `SpanishStrings.greeting`. This also will not change and neither triggers recomposition.
 
 
