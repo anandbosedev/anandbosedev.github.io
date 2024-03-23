@@ -21,7 +21,7 @@ jobs:
           image: ruby:3.3.0
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
             - uses: actions/cache@v4
               with:
                 key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
@@ -33,7 +33,7 @@ jobs:
                   ${{ env.GEM_HOME }}
             - name: Setup Pages
               id: pages
-              uses: actions/configure-pages@v3
+              uses: actions/configure-pages@v4
             - name: Build with Jekyll
               run: |
                 bundle install
@@ -41,7 +41,7 @@ jobs:
               env:
                 JEKYLL_ENV: production
             - name: Upload Artifact
-              uses: actions/upload-pages-artifact@v2
+              uses: actions/upload-pages-artifact@v3
     deploy:
         runs-on: ubuntu-latest
         environment: 
@@ -51,4 +51,4 @@ jobs:
         steps:
             - name: Deploy to GitHub Pages
               id: deployment
-              uses: actions/deploy-pages@v2
+              uses: actions/deploy-pages@v4
