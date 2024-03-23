@@ -31,17 +31,11 @@ For better understanding, here is an illustrative example.
 Let's start with an unsigned build of the application `app-release-unsigned.apk`.
 First of all, let's create a keystore with `keytool`. Here's how.
 
-```shell
-$ keytool -genkeypair \     
-> -alias first \
-> -keyalg RSA \
-> -keysize 4096 \
-> -validity 10000 \
-> -keypass ******** \
-> -keystore first.jks \
-> -storepass ******** \
-> -storetype PKCS12
-
+```
+keytool -genkeypair -alias first -keyalg RSA -keysize 4096 -validity 10000 -keypass ******** -keystore first.jks -storepass ******** -storetype PKCS12
+```
+This command will asks some basic information for generating signing key certificate `first.jks`.
+```
 What is your first and last name?
   [Unknown]:  First
 What is the name of your organizational unit?
@@ -58,36 +52,28 @@ Is CN=First, OU=Example, O=Example, L=Example, ST=Example, C=IN correct?
   [no]:  yes
 ```
 Next, sign your application with the keystore `first.jks`.
-```shell
-$ apksigner sign \
-> --ks first.jks \
-> --in app-release-unsigned.apk \
-> --out app-first.apk
+```
+apksigner sign --ks first.jks --in app-release-unsigned.apk --out app-first.apk
+```
+For signing the APK, you need to provide password of the signing key certificate.
+```
 Keystore password for signer #1: ********
 ```
 Now, you have your application signed with `first.jks` to `app-first.jks`. Generate your second keystore `second.jks`.
-```shell
-$ keytool -genkeypair \
-> -alias second \
-> -keyalg RSA \
-> -keysize 4096 \
-> -validity 10000 \
-> -keypass ******** \
-> -keystore second.jks \
-> -storepass ******** \
-> -storetype PKCS12
+```
+keytool -genkeypair -alias second -keyalg RSA -keysize 4096 -validity 10000 -keypass ******** -keystore second.jks -storepass ******** -storetype PKCS12
 ```
 This will ask the same questions as asked when you created the first key. After that, sign your app with second key to `app-second.apk`.
-```shell
-$ apksigner sign \  
-> --ks second.jks \
-> --in app-release-unsigned.apk \
-> --out app-second.apk
+```
+apksigner sign --ks second.jks --in app-release-unsigned.apk --out app-second.apk
 Keystore password for signer #1: ********
 ```
 All right. Now, verify the both apps are signed with the correct keys.
-```shell
-$ apksigner verify -v --print-certs app-first.apk 
+```
+apksigner verify -v --print-certs app-first.apk 
+```
+If the command outputs `Verifies`, everything is good. The successful outcome will be something like:
+```
 Verifies
 Verified using v1 scheme (JAR signing): true
 Verified using v2 scheme (APK Signature Scheme v2): true
@@ -102,9 +88,13 @@ Signer #1 key size (bits): 4096
 Signer #1 public key SHA-256 digest: fb4a91fdaf390e50b023191c58983de2cf57423cf920d7d6132d16062793081f
 Signer #1 public key SHA-1 digest: 4810c2293d6cdf901e422c70494c69b3fdad7902
 Signer #1 public key MD5 digest: 314d879ff989fb8d2c7dbdde23b14e8c
-.... (output redacted for brevity)
-
-$ apksigner verify -v --print-certs app-second.apk
+```
+Let's verify the `app-second.apk`
+```
+apksigner verify -v --print-certs app-second.apk
+```
+Just like the first one, if the command outputs `Verifies`, everything is good.
+```
 Verifies
 Verified using v1 scheme (JAR signing): true
 Verified using v2 scheme (APK Signature Scheme v2): true
@@ -122,39 +112,40 @@ Signer #1 public key MD5 digest: 1af143237d97328108a49e3d84968628
 .... (output redacted for brevity)
 ```
 Let's try to install the signed apps.
-```shell
-$ adb install app-first.apk 
+```
+adb install app-first.apk 
 Performing Streamed Install
 Success
-$ adb install app-second.apk
+adb install app-second.apk
 Performing Streamed Install
 adb: failed to install app-second.apk: Failure [INSTALL_FAILED_UPDATE_INCOMPATIBLE: Package com.example.app signatures do not match previously installed version; ignoring!]
 ```
 This is usual. Both of the apps have same package identifiers and different signatures. Android forbids update if signature mismatches.
  
 _Android accepts the APK only if it proves the trust with older signing keys. APK Signature Scheme v3 introduces the facility to do this. With the `apksigner` utility, we have to rotate the key to create a signing certificate lineage and sign the APK. It includes the proof that the new key has a relationship to the old key._
-```shell
-$ apksigner rotate \
-> --old-signer --ks first.jks \
-> --new-signer --ks second.jks \
-> --out lineage-1-2         
+```
+apksigner rotate --old-signer --ks first.jks --new-signer --ks second.jks --out lineage-1-2
+```
+This will ask the passwords of both `first.jks` and `second.jks`.
+```     
 Keystore password for old signer: ********
 Keystore password for new signer: ********
 ```
 Now we sign the APK with the new signer `second.jks` keystore, provided the old keystore `first.jks` and the signing certificate lineage of the keystores.
-```shell
-$ apksigner sign \
-> --ks first.jks \
-> --next-signer --ks second.jks \
-> --lineage lineage-1-2 \
-> --in app-release-unsigned.apk \
-> --out app-rotated-1-2.apk
+```
+apksigner sign --ks first.jks --next-signer --ks second.jks --lineage lineage-1-2 --in app-release-unsigned.apk --out app-rotated-1-2.apk
+```
+Again, this will ask the passwords of both `first.jks` and `second.jks`.
+```
 Keystore password for signer #1: ********
 Keystore password for signer #2: ********
 ```
 All right. Let's take a look on the signature of `app-rotated-1-2.apk`
-```shell
-$ apksigner verify -v --print-certs app-rotated-1-2.apk
+```
+apksigner verify -v --print-certs app-rotated-1-2.apk
+```
+The output of the command will be:
+```
 Verifies
 Verified using v1 scheme (JAR signing): true
 Verified using v2 scheme (APK Signature Scheme v2): true
@@ -172,8 +163,11 @@ Signer #1 public key MD5 digest: 1af143237d97328108a49e3d84968628
 .... (output redacted for brevity)
 ```
 The signature looks exactly like from the `app-second.apk`. Let's install over the `app-first.apk`.
-```shell
-$ adb install app-rotated-1-2.apk 
+```
+adb install app-rotated-1-2.apk 
+```
+The output of the command will be:
+```
 Performing Streamed Install
 Success
 ```
@@ -184,31 +178,30 @@ For the earlier versions of Android, the future updates will requires to be sign
 
 ### Rotate it again
 What will have to do if you want to publish updates with a newer keystore `third.jks`? Rotate it again, with older keystores along the previous signing certificate lineage.
-```shell
-$ apksigner rotate \     
-> --in lineage-1-2 \
-> --out lineage-1-2-3 \
-> --old-signer --ks second.jks \
-> --new-signer --ks third.jks
+```
+apksigner rotate --in lineage-1-2 --out lineage-1-2-3 --old-signer --ks second.jks --new-signer --ks third.jks
+```
+This will ask the passwords for `second.jks` and `third.jks`
+```
 Keystore password for old signer: ********
 Keystore password for new signer: ********
 ```
 This will generate a new signing certificate lineage, which proves the `third.jks` keystore belongs to the family of `first.jks` and `second.jks`. Now sign with the latest keystore `third.jks`, previous keystore `second.jks` and the latest signing certificate lineage `lineage-1-2-3`.
-```shell
-$ apksigner sign \
-> --ks first.jks \
-> --next-signer --ks second.jks \
-> --next-signer --ks third.jks \
-> --lineage lineage-1-2-3 \
-> --in app-release-unsigned.apk \
-> --out app-rotated-2-3.apk
+```
+apksigner sign --ks first.jks --next-signer --ks second.jks --next-signer --ks third.jks --lineage lineage-1-2-3 --in app-release-unsigned.apk --out app-rotated-2-3.apk
+```
+You need to provide the passwords for `first.jks`,`second.jks` and `third.jks`.
+```
 Keystore password for signer #1: ********
 Keystore password for signer #2: ********
 Keystore password for signer #3: ********
 ```
 The rotated APK will have signature by `third.jks` keystore, but includes the proof that it can be verified over `app-first.apk` and `app-second.apk`.
-```shell
+```
 apksigner verify -v --print-certs app-rotated-2-3.apk 
+```
+This command will produce the following output:
+```
 Verifies
 Verified using v1 scheme (JAR signing): true
 Verified using v2 scheme (APK Signature Scheme v2): true
@@ -223,17 +216,22 @@ Signer #1 key size (bits): 4096
 Signer #1 public key SHA-256 digest: 11f007348e9bc258207c58a819c3ffbde118d99c7f3ecf6fd6ec94db18f768a7
 Signer #1 public key SHA-1 digest: aa6c269b71a495699aa6cf32aeae15377713754a
 Signer #1 public key MD5 digest: a1c68cc9d3a02954d2ceeeef06f5b3c1
-.... (output redacted for brevity)
 ```
 Finally, install over the `app-second.apk`
-```shell
-$ adb install app-rotated-2-3.apk 
+```
+adb install app-rotated-2-3.apk 
+```
+The installation will be successful:
+```
 Performing Streamed Install
 Success
 ```
 Yay! For Android 9.0 Pie or later, the further updates required to be signed with the `third.jks` keystore only. But make sure that you have to keep the signing certificate lineage forever, because in case you have to use a new keystore, you will need it.
-```shell
-$ adb install app-third.apk 
+```
+adb install app-third.apk
+```
+Again, we can see the success message!
+```
 Performing Streamed Install
 Success
 ```
