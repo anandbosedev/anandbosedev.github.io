@@ -22,15 +22,15 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-            - uses: actions/cache@v4
-              with:
-                key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
-                restore-keys: |
-                  ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
-                  ${{ runner.os }}-build-
-                  ${{ runner.os }}-
-                path: |
-                  ${{ env.GEM_HOME }}
+            # - uses: actions/cache@v4
+            #   with:
+            #     key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
+            #     restore-keys: |
+            #       ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
+            #       ${{ runner.os }}-build-
+            #       ${{ runner.os }}-
+            #     path: |
+            #       ${{ env.GEM_HOME }}
             - name: Setup Pages
               id: pages
               uses: actions/configure-pages@v4
