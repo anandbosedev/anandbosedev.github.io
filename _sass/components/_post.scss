@@ -8,7 +8,7 @@
 
   &__title {
     font-size: double($font-size-tiny);
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: $base-spacing-unit;
 
     @include mq($from: tablet) {
