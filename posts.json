@@ -6,7 +6,8 @@ layout: null
         "title": {{ post.title | jsonify }},
         "description": {{ post.content | jsonify }},
         "pubdate": {{ post.date | date_to_rfc822 | jsonify }},
-        "link": {{ post.url | prepend: site.baseurl | prepend: site.url | jsonify }}
+        "link": {{ post.url | prepend: site.baseurl | prepend: site.url | jsonify }},
+        "image": {% if post.image != null %}{{ post.image | prepend: site.baseurl | prepend: site.url | jsonify }}{% else %}null{% endif %}
     }{% if forloop.last == false %},
     {% endif %}{% endfor %}
 ]
