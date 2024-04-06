@@ -1,0 +1,12 @@
+---
+layout: null
+---
+[
+    {% for post in site.posts %}{
+        "title": {{ post.title | jsonify }},
+        "description": {{ post.content | jsonify }},
+        "pubdate": {{ post.date | date_to_rfc822 | jsonify }},
+        "link": {{ post.url | prepend: site.baseurl | prepend: site.url | jsonify }}
+    }{% if forloop.last == false %},
+    {% endif %}{% endfor %}
+]
