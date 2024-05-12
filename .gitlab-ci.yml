@@ -1,16 +1,21 @@
-image: ruby:3.2.2
-cache:
-  paths:
-    - vendor/
-pages:
-  before_script:
-    - gem install bundler
-    - bundle install
+default:
+  image: "hugomods/hugo:latest"
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+test:  # builds and tests your site
   script:
-    - bundle exec jekyll build -d public
+    - hugo
+  rules:
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+
+pages:  # a predefined job that builds your pages and saves them to the specified path.
+  script:
+    - hugo
   artifacts:
     paths:
       - public
   rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   environment: production
