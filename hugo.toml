@@ -1,0 +1,82 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = "Anand's Blog"
+theme = ['hugo-video', 'anubis2']
+paginate = 5
+
+[author]
+name = "Anand Bose"
+email  = "anandbose16@gmail.com"
+location = "Kerala, India"
+
+[params]
+description = "Anand's Blog | Home of my thoughts"
+dateFormat = "2 Jan 2006"
+paginationSinglePost = true
+images = [
+  'anandbose-blog-banner.png'
+]
+colorTheme = "auto"
+colorThemeSwitcher = true
+
+readMore = false
+readNextPosts = 2
+copyCodeButton = true
+rssAsSocialIcon = true
+locale = "en-us"
+math = false # true: enable mathjax globally (default is false)
+toc = true
+
+social = [
+    # { id = "docs", url = "https://gohugo.io/documentation/" },
+    { id = "github", url = "https://github.com/anandbosedev" },
+    { id = "linkedin", url = "https://www.linkedin.com/in/anandbosedev" },
+    # { id = "email", url = "anandbose16@gmail.com" },
+    # { id = "facebook", url = "#" },
+    # { id = "instagram", url = "https://instagram.com/anandbose.dev" },
+    # { id = "netease-music", url = "#" },
+    # { id = "telegram", url = "#" },
+    { id = "mastodon", url = "https://mastodon.online/@anandbose" },
+    # { id = "youtube", url = "#" }
+]
+
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 2
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 3
+
+[[menu.main]]
+name = "Archive"
+identifier = "archive"
+url = "/posts/"
+weight = 4
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+author = "authors"
+series = "series"
+
+[markup.highlight]
+anchorLineNos      = false
+codeFences         = true # tested with true and false. Both work.
+noClasses          = true # If you run with markup.highlight.noClasses=false in your site configuration, you need a style sheet.
+style              = 'github-dark'
+tabWidth           = 4
+
+[permalinks]
+  [permalinks.page]
+    posts = '/:year/:month/:day/:slug/'

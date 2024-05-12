@@ -1,0 +1,6 @@
+[submodule "themes/anubis2"]
+	path = themes/anubis2
+	url = git@github.com:anandbosedev/hugo-theme-anubis2.git
+[submodule "themes/hugo-video"]
+	path = themes/hugo-video
+	url = git@github.com:martignoni/hugo-video.git

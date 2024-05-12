@@ -4,7 +4,6 @@ This is my public notebook regarding Android development, Jetpack compose, and s
 
 ## Special Thanks
 
-* [type](https://github.com/ahmadajmi/type) - The minimal and free theme the blog is built upon.
-* [zed.dev](https://zed.dev) - The theme inspiration.
-* [jekyll](https://github.com/jekyll/jekyll) - The site generator ecosystem that made this blog a reality.
-* [mecid/mecid.github.io](https://mecid/mecid.github.io) - The Archive page implementation.
+* [hugo](https://gohugo.io) - The static site generator built with Go
+* [Junyi-99/hugo-theme-anubis2](https://github.com/Junyi-99/hugo-theme-anubis2) - The theme I followed for this blog, with minor customizations.
+* [martignoni/hugo-video](https://github.com/martignoni/hugo-video) - Video embedding plugin
