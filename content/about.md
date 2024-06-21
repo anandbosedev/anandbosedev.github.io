@@ -8,7 +8,7 @@ I'm Anand Bose. I used to make Android applications since Android 2.3
 
 A few things I enjoy most:
 
-* 🧑‍💻 Making apps for Android with Kotlin and Jetpack Compose
+* 🧑‍💻 Exploring Kotlin and Compose Multiplatform
 * 🧵 Blogging and talking tech
 * 👨‍👩‍👦 Having fun times with family
 * 📸 Photography
