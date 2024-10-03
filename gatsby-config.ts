@@ -15,7 +15,7 @@ const config: GatsbyConfig = {
     siteDescription: ``,
     siteImage: `/banner.jpg`,
     siteLanguage: `en`,
-    author: `@anandbosedev`,
+    author: `Anand Bose`,
   },
   trailingSlash: `always`,
   plugins: [
