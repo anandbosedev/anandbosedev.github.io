@@ -161,6 +161,21 @@ const code: ThemeUICSSObject = {
       content: `'diff'`,
       background: `#e6ffed`,
     },
+    'pre[class~="language-java"]:before': {
+      content: `"java"`,
+      background: `#ff9800`,
+      color: `black`,
+    },
+    'pre[class~="language-kotlin"]:before': {
+      content: `"kotlin"`,
+      background: `#f9ac00`,
+      color: `black`,
+    },
+    'pre[class~="language-swift"]:before': {
+      content: `"swift"`,
+      background: `#777bb3`,
+      color: `black`,
+    },
   },
   '.gatsby-highlight > code[class*="language-"], .gatsby-highlight > pre[class=*="language-"]': {
     wordSpacing: `normal`,

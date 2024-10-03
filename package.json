@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "file:gatsby-theme-minimal-blog",
-    "@lekoarts/gatsby-theme-minimal-blog-core": "file:gatsby-theme-minimal-blog-core",
     "ajv": "^8.17.1",
     "gatsby": "^5.13.6",
     "gatsby-plugin-feed": "^5.13.1",
@@ -32,6 +31,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "cross-env": "^7.0.3",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "yarn": "^1.22.22"
   }
 }

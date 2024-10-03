@@ -1,10 +1,15 @@
 import * as React from "react"
 import { useColorMode } from "theme-ui"
-import { Highlight } from "prism-react-renderer"
+import { Highlight, Prism } from "prism-react-renderer"
 import { calculateLinesToHighlight, getLanguage, GetLanguageInput } from "@lekoarts/themes-utils"
 import Copy from "./copy"
 import useMinimalBlogConfig from "../hooks/use-minimal-blog-config"
 import { lightTheme, darkTheme } from "../utils/prism-themes"
+
+(typeof global !== "undefined" ? global : window).Prism = Prism
+require("prismjs/components/prism-java")
+require("prismjs/components/prism-kotlin")
+require("prismjs/components/prism-swift")
 
 type CodeProps = {
   codeString: string

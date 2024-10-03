@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@lekoarts/rehype-meta-as-attributes": "^3.0.1",
-    "@lekoarts/themes-utils": "^3.0.1",
+    "@lekoarts/themes-utils": "file:../themes-utils",
     "@mdx-js/react": "^2.3.0",
     "gatsby-plugin-mdx": "^5.13.1",
     "gatsby-plugin-sharp": "^5.13.1",
