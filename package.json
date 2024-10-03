@@ -16,7 +16,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@lekoarts/gatsby-theme-minimal-blog": "^6.2.1",
+    "@lekoarts/gatsby-theme-minimal-blog": "file:gatsby-theme-minimal-blog",
+    "@lekoarts/gatsby-theme-minimal-blog-core": "file:gatsby-theme-minimal-blog-core",
     "ajv": "^8.17.1",
     "gatsby": "^5.13.6",
     "gatsby-plugin-feed": "^5.13.1",
