@@ -3,7 +3,7 @@ import { visuallyHidden } from "./utils"
 
 const code: ThemeUICSSObject = {
   ".prism-code": {
-    fontSize: [1, 1, 2],
+    fontSize: [1, 1, 1],
     webkitOverflowScrolling: `touch`,
     backgroundColor: `transparent`,
     minWidth: `100%`,
@@ -35,7 +35,7 @@ const code: ThemeUICSSObject = {
     px: 2,
     py: 1,
     borderRadius: `4px`,
-    fontSize: `0.95em`,
+    fontSize: `0.85em`,
   },
   ".gatsby-highlight": {
     fontSize: [1, 1, 2],
