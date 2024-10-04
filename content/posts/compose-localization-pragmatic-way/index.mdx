@@ -21,7 +21,7 @@ of these limitations:
 * Since the resource files are XML, you might need to use `<![CDATA[]]>` during some instances
   to escape some special characters.
 
-# The motivation
+## The motivation
 
 I like the way how we access the Material theme properties in Compose code. It is seamless,
 independent, simple and concise.
@@ -48,7 +48,7 @@ When the user wants to update the application locale, provide the updated locali
 to the `CompositionLocalProvider` and let it recompose the parts of the hierarchy affected 
 by the locale change.
 
-# The implementation
+## The implementation
 
 Instead of keeping strings in separate resource files, we can keep them in the Kotlin code
 itself. We can define an interface, provide properties or methods which return localized
@@ -138,7 +138,7 @@ good when you localize the app to RTL languages like Arabic. It is also notable 
 parameter in `LocaleProvider` composable is provided to help with generating previews on other
 locales.
 
-# The demo
+## The demo
 
 For the demonstration, let's build a simple composable UI with some texts and buttons. This example
 will be demonstrating the Czech localization of the UI because Czech language has different plural
@@ -207,7 +207,7 @@ import AppPreviewVideo from "./livedemo.avif"
 
 <img lazy width="100%" src={AppPreviewVideo} alt="Android Studio rendering AppleCounter composable live, even with locale switching!"/>
 
-# Summary
+## Summary
 
 In the demo code, you can
 

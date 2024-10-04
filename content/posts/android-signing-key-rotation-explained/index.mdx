@@ -12,7 +12,7 @@ like `bash` or `zsh`. It is recommended to configure the `$PATH` variable of you
 the installation directories of JDK and Android SDK command-line tools, so you can avoid typing the
 full path of the tool everytime.
 
-# Introduction
+## Introduction
 From the Android developer documentation:
 
 > Android 9 (API level 28) supports APK key rotation, which gives apps the ability to change their signing key as part of an APK update. To make rotation practical, APKs must indicate levels of trust between the new and old signing key. To support key rotation, we updated the APK signature scheme from v2 to v3 to allow the new and old keys to be used. V3 adds information about the supported SDK versions and a proof-of-rotation struct to the APK signing block. 
@@ -30,7 +30,7 @@ However, it doesn't mean to solve these situations:
 
 The introduction of key rotation have minor impact around the developers for now, and most of us don't really care about it. The cryptographic advancements over the APK siging schemes from v1 to v4 is appreciable. The APK signing scheme v2 detects the tampering of zip central directory, and also improve the speed of installation. V3 introduced key rotation and the ability to sign with multiple keystores. The preview V4 scheme produces a new kind of signature in a separate file (apk-name.apk.idsig). This scheme supports ADB incremental APK installation, which speeds up APK install.
 
-# Let's get started
+## Let's get started
 For better understanding of how the key rotation works, here is an illustration. The relationship
 between the keys and signatures are expressed through lineages, which establishes the cryptographic
 trust between the existing key and the new key. If you have `n` number of keys, you will need `n-1`
@@ -204,7 +204,7 @@ The rotated APK installs fine for the Androids before 9.0 Pie API 28. For previo
 
 For the earlier versions of Android, the future updates will requires to be signed with the previous keystore and the signing certificate lineage, which invalidates the benefit of key rotation. I hope Google will find a solution for that.
 
-# Rotate it again
+## Rotate it again
 What will have to do if you want to publish updates with a newer keystore `third.jks`? Rotate it again, with older keystores along the previous signing certificate lineage.
 ```shell
 user@host:~$ apksigner rotate \
@@ -261,7 +261,7 @@ Performing Streamed Install
 Success
 ```
 
-# Reference
+## Reference
 - [APK Signature Scheme v3](https://source.android.com/security/apksigning/v3)
 - [APK signature scheme with key rotation](https://developer.android.com/about/versions/pie/android-9.0#apk-key-rotation)
 - [APK Signature Scheme v4](https://source.android.com/security/apksigning/v4)

@@ -65,7 +65,7 @@ CounterApp():
             Spacer(...)
             Button(...)
 ```
-# Reverse Engineering Compose app
+## Reverse Engineering Compose app
 
 To decompile the app, I used [dex2jar](https://github.com/pxb1988/dex2jar) for decompiling APK file,
 and [jd-gui](https://github.com/java-decompiler/jd-gui) for decompiling JAR to human-readable source.
@@ -124,7 +124,7 @@ CounterApp(..., composer):
 This answers question #2. In the compiled code, the `@Composable` functions require the instance
 of `Composer` interface. That's why it cannot be called from outside of the `@Composable` context.
 
-# Restart groups vs Replaceable groups
+## Restart groups vs Replaceable groups
 
 To put this in the most simplest manner, **restart groups** are a unit of composable chunk which will be called
 again (aka *"recomposed"*) when the state (aka *"remembered"* value) changes. The **replaceable groups** are
@@ -134,7 +134,7 @@ scoped to the restart groups internally. Also, it will identify the state change
 `@Composable` tree, determine the affected and unaffected nodes, and replace/reuse the affected nodes in the
 most efficient manner.
 
-# Optimizations
+## Optimizations
 
 The compose compiler optimizes the recomposition in the most efficient way. From the reverse engineered code,
 we can find the compose compiler applies several optimizations in the code. Here are a few examples:
