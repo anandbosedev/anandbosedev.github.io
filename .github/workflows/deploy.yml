@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: 20
       - run: npm install
+      - run: npm install --save-dev @parcel/watcher
       - run: npx gatsby build
       - uses: actions/upload-pages-artifact@v3
         with:
