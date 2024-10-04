@@ -9,10 +9,10 @@ const config: GatsbyConfig = {
     // You can also add new values here to query them like usual
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/gatsby-config.mjs
     siteTitle: `Anand's Blog`,
-    siteTitleAlt: `Anand's Blog - Tech, coding and fun stuffs`,
-    siteHeadline: `Anand's Blog - Tech, coding and fun stuffs by @anandbosedev`,
+    siteTitleAlt: `Anand's Blog - Tech, coding and fun`,
+    siteHeadline: `Anand's Blog - Tech, coding and fun`,
     siteUrl: `https://anandbose.dev`,
-    siteDescription: ``,
+    siteDescription: `I'm Anand Bose. I'm passionate about mobile application development for Android and iOS. In this blog, I will be posting some interesting stuffs about Kotlin, Compose, Swift and SwiftUI.`,
     siteImage: `/banner.jpg`,
     siteLanguage: `en`,
     author: `Anand Bose`,
