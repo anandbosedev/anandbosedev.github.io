@@ -123,7 +123,7 @@ const config: GatsbyConfig = {
   }
 }`,
             output: `rss.xml`,
-            title: `Minimal Blog - @lekoarts/gatsby-theme-minimal-blog`,
+            title: `Anand's Blog - Tech, coding and fun.`,
           },
         ],
       },
