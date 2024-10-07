@@ -40,7 +40,7 @@ const config: GatsbyConfig = {
           },
           {
             name: `Mastodon`,
-            url: `https://mastodon.online/@anandbose`,
+            url: `https://mastodon.social/@anandbosedev`,
           },
         ],
       },
