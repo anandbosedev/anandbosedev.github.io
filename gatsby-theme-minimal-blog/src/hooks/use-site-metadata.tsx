@@ -11,6 +11,8 @@ type UseSiteMetadataProps = {
       siteImage: string
       siteLanguage: string
       author: string
+      twitterHandle: string
+      fediverseCreator: string
       [key: string]: unknown
     }
   }
@@ -29,6 +31,8 @@ const useSiteMetadata = () => {
           siteImage
           siteLanguage
           author
+          twitterHandle
+          fediverseCreator
         }
       }
     }

@@ -16,6 +16,8 @@ const config: GatsbyConfig = {
     siteImage: `/banner.jpg`,
     siteLanguage: `en`,
     author: `Anand Bose`,
+    twitterHandle: `@anandbosedev`,
+    fediverseCreator: `@anandbosedev@mastodon.social`,
   },
   trailingSlash: `always`,
   plugins: [

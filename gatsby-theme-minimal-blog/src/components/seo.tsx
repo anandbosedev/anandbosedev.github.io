@@ -27,8 +27,9 @@ const Seo = ({
     siteUrl,
     siteDescription: defaultDescription,
     siteImage: defaultImage,
-    author,
     siteLanguage,
+    twitterHandle,
+    fediverseCreator,
   } = site
 
   const seo = {
@@ -55,7 +56,8 @@ const Seo = ({
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:image:alt" content={seo.description} />
-      <meta name="twitter:creator" content={author} />
+      <meta name="twitter:creator" content={twitterHandle} />
+      <meta name="fediverse:creator" content={fediverseCreator} />
       <meta name="gatsby-theme" content="@lekoarts/gatsby-theme-minimal-blog" />
       <link rel="icon" type="image/png" sizes="32x32" href={withPrefix(`/favicon-32x32.png`)} />
       <link rel="icon" type="image/png" sizes="16x16" href={withPrefix(`/favicon-16x16.png`)} />
