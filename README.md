@@ -3,7 +3,7 @@
 This is the home of my blog hosted with GitHub Pages, where I share the bits that are 
 interesting to me, and some nice and useful tips that can help you in your projects. 
 I usually talks about application development with Kotlin and Compose, but I love to 
-explore Swift, SwiftUI and other technologies as well.
+explore Kotlin and Compose multiplatform on iOS as well.
 
 ## Thanks
 

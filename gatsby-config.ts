@@ -12,7 +12,7 @@ const config: GatsbyConfig = {
     siteTitleAlt: `Anand's Blog - Tech, coding and fun`,
     siteHeadline: `Anand's Blog - Tech, coding and fun`,
     siteUrl: `https://anandbose.dev`,
-    siteDescription: `I'm Anand Bose. I'm passionate about mobile application development for Android and iOS. In this blog, I will be posting some interesting stuffs about Kotlin, Compose, Swift and SwiftUI.`,
+    siteDescription: `I'm Anand Bose. I'm passionate about mobile application development for Android and iOS. In this blog, I will be posting my thoughts and interesting stuffs about Android development, Kotlin and Compose.`,
     siteImage: `/banner.jpg`,
     siteLanguage: `en`,
     author: `Anand Bose`,
