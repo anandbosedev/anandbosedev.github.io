@@ -5,3 +5,13 @@ html, body {
     padding: 0;
     overflow: hidden;
 }
+
+body {
+    background: #FEF7FF;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #141218;
+    }
+}
