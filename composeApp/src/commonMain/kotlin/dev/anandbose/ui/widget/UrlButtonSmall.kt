@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
-import kotlinx.browser.window
 
 @Composable
 fun UrlButtonSmall(
@@ -20,6 +20,7 @@ fun UrlButtonSmall(
     text: String,
     url: String,
 ) {
+    val uriHandler = LocalUriHandler.current
     Button(
         modifier = modifier,
         content = {
@@ -38,7 +39,7 @@ fun UrlButtonSmall(
             )
         },
         onClick = {
-            window.open(url, "_blank")
+            uriHandler.openUri(url)
         }
     )
 }

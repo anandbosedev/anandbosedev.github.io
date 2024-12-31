@@ -12,8 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
-import kotlinx.browser.window
 
 @Composable
 fun UrlButtonLarge(
@@ -22,6 +22,7 @@ fun UrlButtonLarge(
     text: String,
     url: String,
 ) {
+    val uriHandler = LocalUriHandler.current
     Button(
         modifier = modifier,
         shape = MaterialTheme.shapes.medium,
@@ -45,7 +46,7 @@ fun UrlButtonLarge(
             }
         },
         onClick = {
-            window.open(url, "_blank")
+            uriHandler.openUri(url)
         }
     )
 }
