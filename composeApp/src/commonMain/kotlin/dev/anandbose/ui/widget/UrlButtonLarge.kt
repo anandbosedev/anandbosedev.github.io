@@ -24,7 +24,7 @@ fun UrlButtonLarge(
 ) {
     Button(
         modifier = modifier,
-        shape = MaterialTheme.shapes.small,
+        shape = MaterialTheme.shapes.medium,
         content = {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,

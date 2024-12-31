@@ -9,6 +9,7 @@ import anandbose.composeapp.generated.resources.social_medium
 import anandbose.composeapp.generated.resources.social_twitter
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,6 +20,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
@@ -58,98 +60,103 @@ fun App() {
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopCenter,
             ) {
-                //val scrollState = rememberScrollState()
-                Column(
+                val columns = when {
+                    maxWidth > 660.dp -> 3
+                    maxWidth in 440.dp .. 660.dp -> 2
+                    else -> 1
+                }
+                LazyVerticalGrid(
                     modifier = Modifier
                         .widthIn(max = 760.dp)
                         .padding(horizontal = 32.dp),
-                        //.verticalScroll(state = scrollState),
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                    columns = GridCells.Fixed(count = columns),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    AsyncImage(
-                        model = "https://avatars.githubusercontent.com/u/64779880?v=4",
-                        modifier = Modifier
-                            .padding(top = 32.dp)
-                            .clip(CircleShape)
-                            .size(size = 128.dp),
-                        contentDescription = null
-                    )
-                    Text(
-                        modifier = Modifier.padding(top = 16.dp),
-                        text = "Anand Bose",
-                        style = MaterialTheme.typography.titleLarge,
-                    )
-                    Text(
-                        modifier = Modifier.padding(top = 8.dp),
-                        text = "I'm passionate about building software with Kotlin and Compose.",
-                        style = MaterialTheme.typography.labelLarge,
-                        textAlign = TextAlign.Center,
-                    )
-                    if (this@BoxWithConstraints.maxWidth > 480.dp) {
-                        LazyVerticalGrid(
+                    item(span = { GridItemSpan(columns) }) {
+                        Box(
                             modifier = Modifier.padding(top = 32.dp),
-                            columns = GridCells.Adaptive(minSize = 200.dp),
-                            horizontalArrangement = Arrangement.spacedBy(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(16.dp),
+                            contentAlignment = Alignment.Center,
                         ) {
-                            items(items = Links) {
-                                UrlButtonLarge(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    icon = painterResource(it.icon),
-                                    text = it.title,
-                                    url = it.url,
-                                )
-                            }
-                        }
-                    } else {
-                        LazyColumn(
-                            modifier = Modifier.padding(top = 32.dp),
-                            verticalArrangement = Arrangement.spacedBy(16.dp),
-                        ) {
-                            items(items = Links) {
-                                UrlButtonSmall(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    icon = painterResource(it.icon),
-                                    text = it.title,
-                                    url = it.url,
-                                )
-                            }
+                            AsyncImage(
+                                model = "https://avatars.githubusercontent.com/u/64779880?v=4",
+                                modifier = Modifier
+                                    .clip(CircleShape)
+                                    .size(size = 128.dp),
+                                contentDescription = null
+                            )
                         }
                     }
-                    Text(
-                        modifier = Modifier.padding(vertical = 32.dp),
-                        text = buildAnnotatedString {
-                            append("This website is built with ")
-                            styledLink(
-                                url = "https://www.jetbrains.com/compose-multiplatform/",
-                                text = "Compose Multiplatform",
+                    item(span = { GridItemSpan(columns) }) {
+                        Text(
+                            text = "Anand Bose",
+                            style = MaterialTheme.typography.titleLarge,
+                            textAlign = TextAlign.Center,
+                        )
+                    }
+                    item(span = { GridItemSpan(columns) }) {
+                        Text(
+                            modifier = Modifier.padding(bottom = 24.dp),
+                            text = "I'm passionate about building software with Kotlin and Compose.",
+                            style = MaterialTheme.typography.labelLarge,
+                            textAlign = TextAlign.Center,
+                        )
+                    }
+                    if (columns > 1) {
+                        items(Links) {
+                            UrlButtonLarge(
+                                modifier = Modifier.fillMaxWidth(),
+                                icon = painterResource(it.icon),
+                                text = it.title,
+                                url = it.url,
                             )
-                            append(" and ")
-                            styledLink(
-                                url = "https://kotlinlang.org/docs/wasm-overview.html",
-                                text = "Kotlin/WASM",
+                        }
+                    } else {
+                        items(Links) {
+                            UrlButtonSmall(
+                                modifier = Modifier.fillMaxWidth(),
+                                icon = painterResource(it.icon),
+                                text = it.title,
+                                url = it.url,
                             )
-                            append(". The icons are sourced from ")
-                            styledLink(
-                                url = "https://icons8.com",
-                                text = "icons8.com",
-                            )
-                            append(" and converted to Vector Drawable using ")
-                            styledLink(
-                                url = "https://shapeshifter.design",
-                                text = "ShapeShifter",
-                            )
-                            append(". Source code is available on ")
-                            styledLink(
-                                url = "https://github.com/anandbosedev/anandbosedev.github.io",
-                                text = "GitHub",
-                            )
-                            append(".")
-                        },
-                        textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+                        }
+                    }
+                    item(span = { GridItemSpan(columns) }) {
+                        Text(
+                            modifier = Modifier.padding(vertical = 32.dp),
+                            text = buildAnnotatedString {
+                                append("This website is built with ")
+                                styledLink(
+                                    url = "https://www.jetbrains.com/compose-multiplatform/",
+                                    text = "Compose Multiplatform",
+                                )
+                                append(" and ")
+                                styledLink(
+                                    url = "https://kotlinlang.org/docs/wasm-overview.html",
+                                    text = "Kotlin/WASM",
+                                )
+                                append(". The icons are sourced from ")
+                                styledLink(
+                                    url = "https://icons8.com",
+                                    text = "icons8.com",
+                                )
+                                append(" and converted to Vector Drawable using ")
+                                styledLink(
+                                    url = "https://shapeshifter.design",
+                                    text = "ShapeShifter",
+                                )
+                                append(". Source code is available on ")
+                                styledLink(
+                                    url = "https://github.com/anandbosedev/anandbosedev.github.io",
+                                    text = "GitHub",
+                                )
+                                append(".")
+                            },
+                            textAlign = TextAlign.Center,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
                 }
             }
         }
