@@ -4,7 +4,8 @@ toc: false
 ---
 
 <img src="https://github.com/anand-bose.png" width="128" height="128"/>
-I am Anand Bose. Self-taught software engineer. Frontend developer (Android and Flutter). Passionate on cloud-native engineering and distributed systems.
+<center>I am Anand Bose. Software engineer, hobbyist photographer, husband, dad.</center>
+<center>⚙️ Tech stack: Kotlin & Compose Multiplatform, Flutter, Java, Spring Boot</center>
 
 ## Links
 
