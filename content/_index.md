@@ -3,7 +3,7 @@ title: Hello! 👋
 toc: false
 ---
 
-<img src="https://github.com/anand-bose.png" width="128" height="128"/>
+<img src="https://github.com/anandbosedev.png" width="128" height="128"/>
 <center>I am Anand Bose. Software engineer, hobbyist photographer, husband, dad.</center>
 <center>⚙️ Tech stack: Kotlin & Compose Multiplatform, Flutter, Java, Spring Boot</center>
 
